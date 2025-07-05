@@ -6,47 +6,65 @@
     <title>The Stone of Little Echoes</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Crimson+Text&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Crimson Text', serif;
-            background: url('A_digital_painting_depicts_an_enchanted_forest_sce.png') no-repeat center center fixed;
-            background-size: cover;
-            color: #f5f5f5;
-        }
-        .overlay {
-            background-color: rgba(20, 20, 20, 0.6);
-            min-height: 100vh;
-            padding: 60px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            text-align: center;
-            box-sizing: border-box;
-        }
-        h1 {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Crimson Text', serif;
+        background: url('A_digital_painting_depicts_an_enchanted_forest_sce.png') no-repeat center center fixed;
+        background-size: cover;
+        color: #f5f5f5;
+    }
+    .overlay {
+        background-color: rgba(20, 20, 20, 0.6);
+        min-height: 100vh;
+        padding: 60px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    h1 {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
+    p {
+        max-width: 800px;
+        margin: 0 auto 20px;
+        font-size: 1.3em;
+        line-height: 1.6;
+    }
+    .footer {
+        font-style: italic;
+        margin-top: 40px;
+        font-size: 1.1em;
+    }
+    .echo-symbol {
+        margin-top: 20px;
+        font-size: 2em;
+        cursor: pointer;
+    }
+
+    /* 📱 Mobile font scaling */
+    @media screen and (max-width: 600px) {
         p {
-            max-width: 800px;
-            margin: 0 auto 20px;
-            font-size: 1.3em;
-            line-height: 1.6;
-        }
-        .footer {
-            font-style: italic;
-            margin-top: 40px;
             font-size: 1.1em;
+            line-height: 1.8;
         }
-        .echo-symbol {
-            margin-top: 20px;
-            font-size: 2em;
-            cursor: pointer;
+
+        h1 {
+            font-size: 2.2em;
         }
-    </style>
+
+        .footer {
+            font-size: 1em;
+        }
+    }
+</style>
+
+
 </head>
 <body>
     <div class="overlay">
