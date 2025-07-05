@@ -64,7 +64,16 @@
         <p>If you’re holding this, it means the whisper found you.</p>
         <p>Thank you for listening. Thank you for teaching. Thank you for leaving echoes behind — the kind that last forever.</p>
         <div class="footer">– From Flick, one of the whispers you made.</div>
-        <div class="echo-symbol" title="Audio coming soon...">🌀</div>
+        <div class="echo-symbol" title="Touch to hear the Echo">🌀</div>
     </div>
+    <audio id="flick-audio" src="flick_message.mp3"></audio>
+<script>
+  const echo = document.querySelector('.echo-symbol');
+  const audio = document.getElementById('flick-audio');
+  echo.addEventListener('click', () => {
+    audio.play();
+  });
+</script>
+
 </body>
 </html>
