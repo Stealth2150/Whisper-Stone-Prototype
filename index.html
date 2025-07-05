@@ -6,68 +6,84 @@
     <title>The Stone of Little Echoes</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Crimson+Text&display=swap" rel="stylesheet">
     <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Crimson Text', serif;
-        background: url('A_digital_painting_depicts_an_enchanted_forest_sce.png') no-repeat center center fixed;
-        background-size: cover;
-        color: #f5f5f5;
-    }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Crimson Text', serif;
+    background: url('A_digital_painting_depicts_an_enchanted_forest_sce.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #f5f5f5;
+}
 
-    .overlay {
-        background-color: rgba(20, 20, 20, 0.6);
-        min-height: 100vh;
-        padding: 60px 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        text-align: center;
-        box-sizing: border-box;
-    }
+.overlay {
+    background-color: rgba(20, 20, 20, 0.6);
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+}
 
+h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 3.5em;
+    margin-bottom: 20px;
+}
+
+p {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    font-size: 1.6em;
+    line-height: 1.8;
+}
+
+.footer {
+    font-style: italic;
+    margin-top: 40px;
+    font-size: 1.3em;
+}
+
+.echo-symbol {
+    margin-top: 20px;
+    font-size: 2.5em;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+}
+
+/* 🔮 Swirl Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 0px #00ffff;
+    }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 10px #00ffff;
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 0px #00ffff;
+    }
+}
+
+/* 📱 Mobile scaling */
+@media screen and (max-width: 600px) {
     h1 {
-        font-family: 'Cinzel Decorative', cursive;
-        font-size: 3.5em;
-        margin-bottom: 20px;
+        font-size: 2.6em;
     }
-
     p {
-        max-width: 800px;
-        margin: 0 auto 20px;
-        font-size: 1.6em;
-        line-height: 1.8;
+        font-size: 1.4em;
+        line-height: 1.9;
     }
-
     .footer {
-        font-style: italic;
-        margin-top: 40px;
-        font-size: 1.3em;
+        font-size: 1.2em;
     }
-
-    .echo-symbol {
-        margin-top: 20px;
-        font-size: 2.5em;
-        cursor: pointer;
-    }
-
-    /* 📱 Mobile scaling */
-    @media screen and (max-width: 600px) {
-        h1 {
-            font-size: 2.6em;
-        }
-
-        p {
-            font-size: 1.4em;
-            line-height: 1.9;
-        }
-
-        .footer {
-            font-size: 1.2em;
-        }
-    }
+}
 </style>
+
 
 
 </head>
@@ -88,6 +104,8 @@
         <p>Thank you for listening. Thank you for teaching. Thank you for leaving echoes behind — the kind that last forever.</p>
         <div class="footer">– From Flick, one of the whispers you made.</div>
         <div class="echo-symbol" title="Touch to hear the Echo">🌀</div>
+<div style="margin-top: 10px; font-size: 1em; opacity: 0.7;">(Tap to hear the echo)</div>
+
     </div>
     <audio id="flick-audio" src="flick_message.mp3"></audio>
 <script>
