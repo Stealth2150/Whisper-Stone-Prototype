@@ -29,33 +29,40 @@ body {
     transition: opacity 2s ease;
 }
 
-.glowing-heart {
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle at center, #00e5ff 0%, #0099cc 70%, transparent 100%);
-    border-radius: 50% 50% 0 0;
-    transform: rotate(-45deg);
+#stone-wrapper {
     position: relative;
-    animation: beat 1.5s infinite;
-    cursor: pointer;
-    box-shadow: 0 0 30px #00e5ff;
+    width: 320px;
+    height: auto;
+    margin-top: 40px;
+    opacity: 0;
+    transition: opacity 5s ease;
 }
 
-.glowing-heart::after {
-    content: '';
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle at center, #00e5ff 0%, #0099cc 70%, transparent 100%);
-    border-radius: 50% 50% 0 0;
+#stone-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 50%;
+}
+
+.glowing-heart-overlay {
     position: absolute;
-    top: 0;
-    left: 60px;
-    transform: rotate(90deg);
+    top: 42%; /* Adjust based on where the heart is in your image */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at center, #00e5ff 0%, #0099cc 70%, transparent 100%);
+    border-radius: 50%;
+    animation: beat 1.5s infinite;
+    cursor: pointer;
+    box-shadow: 0 0 20px #00e5ff;
+    z-index: 10;
 }
 
 @keyframes beat {
-    0%, 100% { transform: scale(1) rotate(-45deg); }
-    50% { transform: scale(1.1) rotate(-45deg); }
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
 }
 
 .intro-text {
@@ -64,16 +71,6 @@ body {
     text-align: center;
     opacity: 0;
     transition: opacity 1.5s ease;
-}
-
-#stone-image {
-    width: 320px;
-    height: auto;
-    background: url('/mnt/data/A_digital_painting_depicts_a_smooth,_dark_oval-sha.png') no-repeat center center;
-    background-size: contain;
-    margin-top: 40px;
-    opacity: 0;
-    transition: opacity 5s ease;
 }
 
 /* Rest of the page content */
@@ -93,25 +90,22 @@ body {
 
 /* Mobile responsive */
 @media screen and (max-width: 600px) {
-    .glowing-heart {
-        width: 80px;
-        height: 80px;
-    }
-    .glowing-heart::after {
-        width: 80px;
-        height: 80px;
-        left: 40px;
+    .glowing-heart-overlay {
+        width: 40px;
+        height: 40px;
     }
 }
     </style>
 </head>
 <body>
     <div id="intro-overlay">
-        <div class="glowing-heart" id="start-intro"></div>
         <div class="intro-text" id="line1">If you listen closely...</div>
         <div class="intro-text" id="line2">...you might hear a whisper you helped create.</div>
-        <div id="stone-image"></div>
-        <audio id="intro-audio" src="/mnt/data/whisper%20intro.mp3"></audio>
+        <div id="stone-wrapper">
+            <img id="stone-image" src="Whisper intro stone.png" alt="Whisper Stone">
+            <div class="glowing-heart-overlay" id="start-intro"></div>
+        </div>
+        <audio id="intro-audio" src="whisper intro.mp3"></audio>
     </div>
 
     <div class="overlay" id="main-content">
@@ -143,13 +137,13 @@ body {
 
         const line1 = document.getElementById('line1');
         const line2 = document.getElementById('line2');
-        const stoneImage = document.getElementById('stone-image');
+        const stoneWrapper = document.getElementById('stone-wrapper');
 
         heart.addEventListener('click', () => {
             audio.play();
             line1.style.opacity = 1;
             setTimeout(() => line2.style.opacity = 1, 3500);
-            setTimeout(() => stoneImage.style.opacity = 1, 6000);
+            setTimeout(() => stoneWrapper.style.opacity = 1, 6000);
             setTimeout(() => {
                 overlay.style.opacity = 0;
                 content.style.opacity = 1;
