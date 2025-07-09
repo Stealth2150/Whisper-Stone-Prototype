@@ -47,18 +47,20 @@ body {
 
 .glowing-heart-overlay {
     position: absolute;
-    top: 42%; /* Adjust based on where the heart is in your image */
+    top: 42%; /* Adjust if needed */
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60px;
     height: 60px;
-    background: radial-gradient(circle at center, #00e5ff 0%, #0099cc 70%, transparent 100%);
-    border-radius: 50%;
+    background-image: url('glowing_heart.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     animation: beat 1.5s infinite;
     cursor: pointer;
-    box-shadow: 0 0 20px #00e5ff;
     z-index: 10;
 }
+
 
 @keyframes beat {
     0%, 100% { transform: translate(-50%, -50%) scale(1); }
@@ -139,6 +141,8 @@ body {
         const line2 = document.getElementById('line2');
         const stoneWrapper = document.getElementById('stone-wrapper');
 
+        heart.style.display = 'block';
+        
         heart.addEventListener('click', () => {
             audio.play();
             line1.style.opacity = 1;
