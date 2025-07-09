@@ -43,17 +43,15 @@ body {
     height: auto;
     display: block;
     border-radius: 50%;
-    opacity: 0;
-    transition: opacity 5s ease;
 }
 
 .glowing-heart-overlay {
     position: absolute;
-    top: 42%; /* Adjust if needed */
-    left: 50%;
+    top: 40.7%;
+    left: 50.1%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
+    width: 78px;
+    height: 78px;
     background-image: url('glowing_heart.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -61,6 +59,7 @@ body {
     animation: beat 1.5s infinite;
     cursor: pointer;
     z-index: 10;
+    pointer-events: auto;
 }
 
 @keyframes beat {
@@ -94,8 +93,8 @@ body {
 /* Mobile responsive */
 @media screen and (max-width: 600px) {
     .glowing-heart-overlay {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
     }
 }
     </style>
@@ -108,7 +107,7 @@ body {
             <img id="stone-image" src="Whisper_intro_stone.png" alt="Whisper Stone">
             <div class="glowing-heart-overlay" id="start-intro"></div>
         </div>
-        <audio id="intro-audio" src="whisper_intro.mp3"></audio>
+        <audio id="intro-audio" src="whisper_intro.mp3" preload="auto"></audio>
     </div>
 
     <div class="overlay" id="main-content">
@@ -140,7 +139,7 @@ body {
 
         const line1 = document.getElementById('line1');
         const line2 = document.getElementById('line2');
-        const stoneImage = document.getElementById('stone-image');
+        const stoneWrapper = document.getElementById('stone-wrapper');
 
         heart.style.display = 'block';
 
@@ -149,11 +148,12 @@ body {
             line1.style.opacity = 1;
             setTimeout(() => line2.style.opacity = 1, 3500);
             setTimeout(() => {
-                stoneImage.style.opacity = 1;
+                document.getElementById('stone-image').style.opacity = 1;
             }, 6000);
             setTimeout(() => {
                 overlay.style.opacity = 0;
                 content.style.opacity = 1;
+                heart.style.display = 'none';
             }, 12000);
         });
 
@@ -166,4 +166,3 @@ body {
     </script>
 </body>
 </html>
-
