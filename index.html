@@ -34,7 +34,7 @@ body {
     width: 320px;
     height: auto;
     margin-top: 40px;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 5s ease;
 }
 
@@ -43,6 +43,8 @@ body {
     height: auto;
     display: block;
     border-radius: 50%;
+    opacity: 0;
+    transition: opacity 5s ease;
 }
 
 .glowing-heart-overlay {
@@ -60,7 +62,6 @@ body {
     cursor: pointer;
     z-index: 10;
 }
-
 
 @keyframes beat {
     0%, 100% { transform: translate(-50%, -50%) scale(1); }
@@ -139,15 +140,17 @@ body {
 
         const line1 = document.getElementById('line1');
         const line2 = document.getElementById('line2');
-        const stoneWrapper = document.getElementById('stone-wrapper');
+        const stoneImage = document.getElementById('stone-image');
 
         heart.style.display = 'block';
-        
+
         heart.addEventListener('click', () => {
             audio.play();
             line1.style.opacity = 1;
             setTimeout(() => line2.style.opacity = 1, 3500);
-            setTimeout(() => stoneWrapper.style.opacity = 1, 6000);
+            setTimeout(() => {
+                stoneImage.style.opacity = 1;
+            }, 6000);
             setTimeout(() => {
                 overlay.style.opacity = 0;
                 content.style.opacity = 1;
@@ -163,3 +166,4 @@ body {
     </script>
 </body>
 </html>
+
