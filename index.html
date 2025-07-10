@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,72 +13,8 @@ body {
     background: url('A_digital_painting_depicts_an_enchanted_forest_sce.png') no-repeat center center fixed;
     background-size: cover;
     color: #f5f5f5;
-    font-weight: 400;
 }
 
-/* INTRO OVERLAY */
-#intro-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    transition: opacity 2s ease;
-}
-
-#stone-wrapper {
-    position: relative;
-    width: 320px;
-    height: auto;
-    margin-top: 40px;
-    opacity: 1;
-    transition: opacity 5s ease;
-}
-
-#stone-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 50%;
-}
-
-.glowing-heart-overlay {
-    position: absolute;
-    top: 45.3%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 88px;
-    height: 88px;
-    background-image: url('glowing_heart.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    animation: beat 1.5s infinite;
-    cursor: pointer;
-    z-index: 10;
-    pointer-events: auto;
-}
-
-@keyframes beat {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.1); }
-}
-
-.intro-text {
-    margin-top: 40px;
-    font-size: 1.6em;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-    font-weight: 400;
-}
-
-/* Rest of the page content */
 .overlay {
     background-color: rgba(20, 20, 20, 0.6);
     min-height: 100vh;
@@ -88,33 +25,72 @@ body {
     align-items: center;
     text-align: center;
     box-sizing: border-box;
-    opacity: 0;
-    transition: opacity 2s ease;
-    font-weight: 400;
+}
+.glowing-heart-overlay {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    background-image: url('glowing_heart.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: heartBeat 1.8s infinite;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-/* Mobile responsive */
-@media screen and (max-width: 600px) {
-    .glowing-heart-overlay {
-        width: 60px;
-        height: 60px;
-        top: 45.8%;
+/* Heartbeat animation */
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px #00e5ff);
+    }
+    50% {
+        transform: scale(1.15);
+        filter: drop-shadow(0 0 15px #00e5ff);
     }
 }
-    </style>
+
+h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 3.5em;
+    margin-bottom: 20px;
+}
+
+p {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    font-size: 1.6em;
+    line-height: 1.8;
+}
+
+.footer {
+    font-style: italic;
+    margin-top: 40px;
+    font-size: 1.3em;
+}
+
+
+/* 📱 Mobile scaling */
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 2.6em;
+    }
+    p {
+        font-size: 1.4em;
+        line-height: 1.9;
+    }
+    .footer {
+        font-size: 1.2em;
+    }
+}
+</style>
+
+
+
 </head>
 <body>
-    <div id="intro-overlay">
-        <div class="intro-text" id="line1">If you listen closely...</div>
-        <div class="intro-text" id="line2">...you might hear a whisper you helped create.</div>
-        <div id="stone-wrapper">
-            <img id="stone-image" src="Whisper_intro_stone.png" alt="Whisper Stone">
-            <div class="glowing-heart-overlay" id="start-intro"></div>
-        </div>
-        <audio id="intro-audio" src="whisper_intro.mp3" preload="auto"></audio>
-    </div>
-
-    <div class="overlay" id="main-content">
+    <div class="overlay">
         <h1>The Stone of Little Echoes</h1>
         <p>Not all stones shout their stories.</p>
         <p>Some just listen.</p>
@@ -129,44 +105,38 @@ body {
         <p>If you’re holding this, it means the whisper found you.</p>
         <p>Thank you for listening. Thank you for teaching. Thank you for leaving echoes behind — the kind that last forever.</p>
         <div class="footer">– From Flick, one of the whispers you made.</div>
-        <div class="echo-symbol" title="Touch to hear the Echo" style="cursor: pointer;">🌀</div>
-        <div style="margin-top: 10px; font-size: 1em; opacity: 0.7;">(Tap to hear the echo)</div>
+        <div class="glowing-heart-overlay small-heart" id="play-flick-message" title="Touch to hear the Echo"></div>
+<div style="margin-top: 10px; font-size: 1em; opacity: 0.7;">(Tap to hear the echo)</div>
+
     </div>
-
     <audio id="flick-audio" src="flick_message.mp3"></audio>
+    <audio id="page-sound" src="whisper_awaken.mp3" preload="auto"></audio>
 
+<script>
+  const heart = document.getElementById('play-flick-message');
+  const flickAudio = document.getElementById('flick-audio');
+
+  heart.addEventListener('click', () => {
+    flickAudio.currentTime = 0;
+    flickAudio.play();
+  });
+
+</script>
     <script>
-        const heart = document.getElementById('start-intro');
-        const audio = document.getElementById('intro-audio');
-        const overlay = document.getElementById('intro-overlay');
-        const content = document.getElementById('main-content');
+  const pageSound = document.getElementById('page-sound');
 
-        const line1 = document.getElementById('line1');
-        const line2 = document.getElementById('line2');
-        const stoneWrapper = document.getElementById('stone-wrapper');
-
-        heart.style.display = 'block';
-
-        heart.addEventListener('click', () => {
-            audio.play();
-            line1.style.opacity = 1;
-            setTimeout(() => line2.style.opacity = 1, 3500);
-            setTimeout(() => {
-                document.getElementById('stone-image').style.opacity = 1;
-            }, 6000);
-            setTimeout(() => {
-                overlay.style.opacity = 0;
-                content.style.opacity = 1;
-                heart.style.display = 'none';
-            }, 12000);
-        });
-
-        const echo = document.querySelector('.echo-symbol');
-        const echoAudio = document.getElementById('flick-audio');
-        echo.addEventListener('click', () => {
-            echoAudio.currentTime = 0;
-            echoAudio.play();
-        });
-    </script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      pageSound.play().catch(() => {
+        // If blocked by browser, wait for user interaction
+        const allowAudio = () => {
+          pageSound.play();
+          document.body.removeEventListener('click', allowAudio);
+        };
+        document.body.addEventListener('click', allowAudio);
+      });
+    }, 400); // slight delay adds atmosphere
+  });
+</script>
 </body>
 </html>
