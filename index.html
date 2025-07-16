@@ -1,142 +1,186 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>The Stone of Little Echoes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Crimson+Text&display=swap" rel="stylesheet">
-    <style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Crimson Text', serif;
-    background: url('A_digital_painting_depicts_an_enchanted_forest_sce.png') no-repeat center center fixed;
-    background-size: cover;
-    color: #f5f5f5;
-}
+  <meta charset="UTF-8">
+  <title>The Stone of Little Echoes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Crimson+Text&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Crimson Text', serif;
+      background: url('A_digital_painting_depicts_an_enchanted_forest_sce.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #f5f5f5;
+      overflow: hidden;
+    }
 
-.overlay {
-    background-color: rgba(20, 20, 20, 0.6);
-    min-height: 100vh;
-    padding: 60px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    box-sizing: border-box;
-}
-.glowing-heart-overlay {
-    position: relative;
-    width: 88px;
-    height: 88px;
-    background-image: url('glowing_heart.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    animation: heartBeat 1.8s infinite;
-    cursor: pointer;
-    margin-top: 20px;
-}
+    .intro-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeOutIntro 2s ease forwards;
+      animation-delay: 3s;
+    }
 
-/* Heartbeat animation */
-@keyframes heartBeat {
-    0%, 100% {
+    .intro-heart {
+      width: 88px;
+      height: 88px;
+      background-image: url('glowing_heart.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: heartBeat 1.8s infinite;
+    }
+
+    @keyframes fadeOutIntro {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    .overlay {
+      background-color: rgba(20, 20, 20, 0.6);
+      min-height: 100vh;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+      opacity: 0;
+      animation: fadeInOverlay 2s ease forwards;
+      animation-delay: 3s;
+    }
+
+    @keyframes fadeInOverlay {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .glowing-heart-overlay {
+      position: relative;
+      width: 88px;
+      height: 88px;
+      background-image: url('glowing_heart.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: heartBeat 1.8s infinite;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% {
         transform: scale(1);
         filter: drop-shadow(0 0 20px #00e5ff);
-    }
-    50% {
+      }
+      50% {
         transform: scale(1.25);
         filter: drop-shadow(0 0 15px #00e5ff);
+      }
     }
-}
 
-h1 {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 3.5em;
-    margin-bottom: 20px;
-}
-
-p {
-    max-width: 800px;
-    margin: 0 auto 20px;
-    font-size: 1.6em;
-    line-height: 1.8;
-}
-
-.footer {
-    font-style: italic;
-    margin-top: 40px;
-    font-size: 1.3em;
-}
-
-
-/* 📱 Mobile scaling */
-@media screen and (max-width: 600px) {
     h1 {
-        font-size: 2.6em;
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 3.5em;
+      margin-bottom: 20px;
     }
+
     p {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      font-size: 1.6em;
+      line-height: 1.8;
+    }
+
+    .footer {
+      font-style: italic;
+      margin-top: 40px;
+      font-size: 1.3em;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 2.6em;
+      }
+      p {
         font-size: 1.4em;
         line-height: 1.9;
-    }
-    .footer {
+      }
+      .footer {
         font-size: 1.2em;
+      }
     }
-}
-</style>
-
-
-
+  </style>
 </head>
 <body>
-    <div class="overlay">
-        <h1>The Stone of Little Echoes</h1>
-        <p>Not all stones shout their stories.</p>
-        <p>Some just listen.</p>
-        <p>This one came from a classroom — a world of number lines and sharpened pencils and stories waiting to be written.</p>
-        <p>It remembers a small voice, brave even when it didn’t feel brave. A girl who sat in the quiet corners of the day, whispering her frustration to the page: “I don’t get it.” “I can’t do this.” “Why is it so hard?”</p>
-        <p>And the stone listened.</p>
-        <p>It listened as she kept trying, again and again. It listened when her scribbles became sentences, when her sums started to make sense. It listened the day she whispered, “Ohhh… I get it now.”</p>
-        <p>But more than that — it watched.</p>
-        <p>It saw the teacher who never gave up on her. Who smiled instead of sighing. Who explained things three times and never once made her feel small.</p>
-        <p>A teacher who taught more than just maths and grammar — who helped a girl believe in herself, one little echo at a time.</p>
-        <p>And so the stone remembered. It kept her whispers safe, tucked into its quiet heart, waiting for the day it could return to the one who helped shape them.</p>
-        <p>If you’re holding this, it means the whisper found you.</p>
-        <p>Thank you for listening. Thank you for teaching. Thank you for leaving your own whispers of guidance behind — the kind that last forever.</p>
-        <div class="footer">– From Flick.</div>
-        <div class="glowing-heart-overlay small-heart" id="play-flick-message" title="Touch to hear the Echo"></div>
-<div style="margin-top: 10px; font-size: 1em; opacity: 0.7;">(Tap to hear her echo)</div>
 
-    </div>
-    <audio id="flick-audio" src="flick_message.mp3"></audio>
-    <audio id="page-sound" src="whisper_awaken.mp3" preload="auto"></audio>
+  <!-- ✨ INTRO SCREEN -->
+  <div class="intro-screen">
+    <div class="intro-heart"></div>
+  </div>
 
-<script>
-  const heart = document.getElementById('play-flick-message');
-  const flickAudio = document.getElementById('flick-audio');
+  <!-- 🌲 MAIN CONTENT -->
+  <div class="overlay">
+    <h1>The Stone of Little Echoes</h1>
+    <p>Not all stones shout their stories.</p>
+    <p>Some just listen.</p>
+    <p>This one came from a classroom — a world of number lines and sharpened pencils and stories waiting to be written.</p>
+    <p>It remembers a small voice, brave even when it didn’t feel brave. A girl who sat in the quiet corners of the day, whispering her frustration to the page: “I don’t get it.” “I can’t do this.” “Why is it so hard?”</p>
+    <p>And the stone listened.</p>
+    <p>It listened as she kept trying, again and again. It listened when her scribbles became sentences, when her sums started to make sense. It listened the day she whispered, “Ohhh… I get it now.”</p>
+    <p>But more than that — it watched.</p>
+    <p>It saw the teacher who never gave up on her. Who smiled instead of sighing. Who explained things three times and never once made her feel small.</p>
+    <p>A teacher who taught more than just maths and grammar — who helped a girl believe in herself, one little echo at a time.</p>
+    <p>And so the stone remembered. It kept her whispers safe, tucked into its quiet heart, waiting for the day it could return to the one who helped shape them.</p>
+    <p>If you’re holding this, it means the whisper found you.</p>
+    <p>Thank you for listening. Thank you for teaching. Thank you for leaving your own whispers of guidance behind — the kind that last forever.</p>
+    <div class="footer">– From Flick.</div>
 
-  heart.addEventListener('click', () => {
-    flickAudio.currentTime = 0;
-    flickAudio.play();
-  });
+    <div class="glowing-heart-overlay small-heart" id="play-flick-message" title="Touch to hear the Echo"></div>
+    <div style="margin-top: 10px; font-size: 1em; opacity: 0.7;">(Tap to hear her echo)</div>
+  </div>
 
-</script>
-    <script>
-  const pageSound = document.getElementById('page-sound');
+  <audio id="flick-audio" src="flick_message.mp3"></audio>
+  <audio id="page-sound" src="whisper_awaken.mp3" preload="auto"></audio>
 
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      pageSound.play().catch(() => {
-        // If blocked by browser, wait for user interaction
-        const allowAudio = () => {
-          pageSound.play();
-          document.body.removeEventListener('click', allowAudio);
-        };
-        document.body.addEventListener('click', allowAudio);
-      });
-    }, 400); // slight delay adds atmosphere
-  });
-</script>
+  <script>
+    const heart = document.getElementById('play-flick-message');
+    const flickAudio = document.getElementById('flick-audio');
+
+    heart.addEventListener('click', () => {
+      flickAudio.currentTime = 0;
+      flickAudio.play();
+    });
+  </script>
+
+  <script>
+    const pageSound = document.getElementById('page-sound');
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        pageSound.play().catch(() => {
+          const allowAudio = () => {
+            pageSound.play();
+            document.body.removeEventListener('click', allowAudio);
+          };
+          document.body.addEventListener('click', allowAudio);
+        });
+      }, 400);
+    });
+  </script>
+
 </body>
 </html>
