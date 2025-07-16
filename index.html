@@ -16,36 +16,43 @@
     }
 
     .intro-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: black;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: fadeOutIntro 2s ease forwards;
-      animation-delay: 3s;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
     .intro-heart {
-      width: 88px;
-      height: 88px;
-      background-image: url('glowing_heart.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      animation: heartBeat 1.8s infinite;
-    }
+  width: 200px;
+  height: 200px;
+  background-image: url('glowing_heart.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: heartBeat 1.8s infinite;
+  cursor: pointer;
+}
 
-    @keyframes fadeOutIntro {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
+
+    /* FADE OUT on click */
+.fade-out {
+  animation: fadeOutIntro 2s ease forwards;
+}
+
+@keyframes fadeOutIntro {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 
     .overlay {
       background-color: rgba(20, 20, 20, 0.6);
@@ -58,8 +65,6 @@
       text-align: center;
       box-sizing: border-box;
       opacity: 0;
-      animation: fadeInOverlay 2s ease forwards;
-      animation-delay: 3s;
     }
 
     @keyframes fadeInOverlay {
@@ -127,10 +132,11 @@
 </head>
 <body>
 
-  <!-- ✨ INTRO SCREEN -->
-  <div class="intro-screen">
-    <div class="intro-heart"></div>
-  </div>
+  <!-- ✨ INTERACTIVE INTRO SCREEN -->
+<div class="intro-screen" id="intro-screen">
+  <div class="intro-heart" id="intro-heart"></div>
+</div>
+
 
   <!-- 🌲 MAIN CONTENT -->
   <div class="overlay">
@@ -181,6 +187,20 @@
       }, 400);
     });
   </script>
+  
+<script>
+  const introScreen = document.getElementById('intro-screen');
+  const introHeart = document.getElementById('intro-heart');
+  const overlay = document.querySelector('.overlay');
+
+  introHeart.addEventListener('click', () => {
+    introScreen.classList.add('fade-out');
+    setTimeout(() => {
+      introScreen.style.display = 'none';
+      overlay.style.animation = 'fadeInOverlay 2s ease forwards';
+    }, 2000);
+  });
+</script>
 
 </body>
 </html>
