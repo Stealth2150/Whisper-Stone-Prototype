@@ -12,7 +12,8 @@
     background: url('A_digital_painting_depicts_an_enchanted_forest_sce.png') no-repeat center center fixed;
     background-size: cover;
     color: #f5f5f5;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     font-size: 1.6em;
     line-height: 1.8;
   }
@@ -86,6 +87,8 @@
     text-align: center;
     box-sizing: border-box;
     opacity: 0;
+    overflow-y: auto;
+    max-height: 100vh;
   }
 
   @keyframes fadeInOverlay {
@@ -226,10 +229,12 @@
 
   introHeart.addEventListener('click', () => {
     introScreen.classList.add('fade-out');
-    setTimeout(() => {
-      introScreen.style.display = 'none';
-      overlay.style.animation = 'fadeInOverlay 2s ease forwards';
-    }, 2000);
+setTimeout(() => {
+  introScreen.style.display = 'none';
+  overlay.style.animation = 'fadeInOverlay 2s ease forwards';
+  document.body.style.overflowY = 'auto'; // 👈 Unleash the scroll
+}, 2000);
+
   });
 </script>
 
