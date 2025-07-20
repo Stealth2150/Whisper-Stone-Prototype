@@ -23,21 +23,20 @@
   height: 100vh;
   background-color: black;
   z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 
     .intro-heart {
-  width: 200px;
-  height: 200px;
+  position: absolute;
+  width: 400px;
+  height: 400px;
   background-image: url('glowing_heart.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   animation: heartBeat 1.8s infinite;
   cursor: pointer;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 
@@ -75,8 +74,8 @@
 
     .glowing-heart-overlay {
       position: relative;
-      width: 88px;
-      height: 88px;
+      width: 100px;
+      height: 100px;
       background-image: url('glowing_heart.png');
       background-size: contain;
       background-repeat: no-repeat;
