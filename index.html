@@ -23,11 +23,13 @@
   height: 100vh;
   background-color: black;
   z-index: 9999;
+  overflow: hidden;
 }
 
-
-    .intro-heart {
+.intro-heart {
   position: absolute;
+  top: 50%;
+  left: 50%;
   width: 400px;
   height: 400px;
   background-image: url('glowing_heart.png');
@@ -36,7 +38,7 @@
   background-position: center;
   animation: heartBeat 1.8s infinite;
   cursor: pointer;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%);
 }
 
 
