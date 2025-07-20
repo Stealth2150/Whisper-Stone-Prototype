@@ -38,7 +38,6 @@
   background-position: center;
   animation: heartBeat 1.8s infinite;
   cursor: pointer;
-  transform: translate(-50%, -50%);
 }
 
 
@@ -88,15 +87,16 @@
     }
 
     @keyframes heartBeat {
-      0%, 100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 20px #00e5ff);
-      }
-      50% {
-        transform: scale(1.25);
-        filter: drop-shadow(0 0 15px #00e5ff);
-      }
-    }
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    filter: drop-shadow(0 0 20px #00e5ff);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.25);
+    filter: drop-shadow(0 0 15px #00e5ff);
+  }
+}
+
 
     h1 {
       font-family: 'Cinzel Decorative', cursive;
