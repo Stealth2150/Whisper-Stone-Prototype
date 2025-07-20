@@ -5,6 +5,12 @@
   <title>The Stone of Little Echoes</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Crimson+Text&display=swap" rel="stylesheet">
   <style>
+    html, body {
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* iOS fix */
+}
+
   body {
     margin: 0;
     padding: 0;
@@ -227,13 +233,21 @@
   const introHeart = document.getElementById('intro-heart');
   const overlay = document.querySelector('.overlay');
 
-  introHeart.addEventListener('click', () => {
-    introScreen.classList.add('fade-out');
-setTimeout(() => {
-  introScreen.style.display = 'none';
-  overlay.style.animation = 'fadeInOverlay 2s ease forwards';
-  document.body.style.overflowY = 'auto'; // 👈 Unleash the scroll
-}, 2000);
+introHeart.addEventListener('click', () => {
+  introScreen.classList.add('fade-out');
+
+  setTimeout(() => {
+    // Remove intro screen completely
+    introScreen.remove();
+
+    // Reveal the main content with animation
+    overlay.style.animation = 'fadeInOverlay 2s ease forwards';
+
+    // Make sure body scroll is fully unlocked
+    document.body.style.overflowY = 'auto';
+    document.documentElement.style.overflowY = 'auto';
+    overlay.style.overflowY = 'auto';
+  }, 2000);
 
   });
 </script>
